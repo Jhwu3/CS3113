@@ -110,7 +110,7 @@ void LevelA::initialise()
     
     m_state.enemies = new Entity[ENEMY_COUNT];
     float baseSpeed = 1.0f; // Base speed for enemies
-    float speedVariance = 0.5f; // Maximum variance in speed
+    float speedVariance = 0.6f; // Maximum variance in speed
 
     for (int i = 0; i < ENEMY_COUNT; ++i) {
         int spawnIndex = rand() % validSpawns.size(); // Get a random index for spawn points
