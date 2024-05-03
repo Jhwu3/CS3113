@@ -176,8 +176,8 @@ void LevelA::initialise()
 void LevelA::update(float delta_time)
 {
     if (currentTime >= 120.0f) {
-            gameWon = true;  // Assume gameWon is a bool member of LevelA
-            return;  // Stop updating game logic if the game is won
+            gameWon = true;
+            return;
         }
     
     currentTime += delta_time;  // Accumulate time passed

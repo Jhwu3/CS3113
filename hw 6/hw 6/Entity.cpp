@@ -98,15 +98,13 @@ void Entity::ai_walk()
 
 void Entity::ai_guard(Entity* player)
 {
-    if (!player) return; // Ensure the player entity is valid
+    if (!player) return;
 
-    // Calculate the vector from this enemy to the player
     glm::vec3 direction = player->get_position() - m_position;
     
-    // Normalize the direction vector to have a length of 1
+
     direction = glm::normalize(direction);
 
-    // Update movement towards the player
     m_movement = direction;
 }
 
@@ -165,17 +163,17 @@ void Entity::update(float delta_time, Entity* player, Entity* objects, int objec
               angularVelocity *= 3; // Triple the speed after 60 seconds
           }
           m_orbitAngle += angularVelocity * delta_time; // Consistently increase the angle
-          if (m_orbitAngle > 2 * M_PI) // Normalize the angle
+          if (m_orbitAngle > 2 * M_PI)
               m_orbitAngle -= 2 * M_PI;
         
 
-          // Calculate the new position based on a consistent orbit, independent of player movement
+
           m_position.x = player->get_position().x + m_orbitRadius * cos(m_orbitAngle);
           m_position.y = player->get_position().y + m_orbitRadius * sin(m_orbitAngle);
         
         for (int i = 0; i < object_count; i++) {
             if (objects[i].m_entity_type == ENEMY && check_collision(&objects[i])) {
-                objects[i].deactivate(); // Deactivate the enemy
+                objects[i].deactivate();
                 
                 if (jump_sfx) {
                     Mix_VolumeChunk(jump_sfx, 1 / 4);
